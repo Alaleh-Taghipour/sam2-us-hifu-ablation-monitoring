@@ -6,7 +6,7 @@ The code was developed for sequential Verasonics B-mode ultrasound frames acquir
 
 ## Repository contents
 
-```text
+```
 sam2-us-hifu-ablation-monitoring/
 │
 ├── app.py
@@ -16,9 +16,12 @@ sam2-us-hifu-ablation-monitoring/
 │   └── README.md
 ├── checkpoints/
 │   └── README.md
-└── data_sample/
-    ├── images/
-    └── masks/
+└── data/
+    └── Annotations/
+        ├── Images/
+        │   └── image_seq_0/
+        └── Annotations/
+            └── image_seq_0/
 
 
 ```
@@ -57,7 +60,7 @@ Then install PyTorch and TorchVision according to your operating system and CUDA
 
 A typical installation workflow is:
 
-```bash
+```
 git clone https://github.com/facebookresearch/sam2.git
 cd sam2
 pip install -e ".[notebooks]"
@@ -65,7 +68,7 @@ pip install -e ".[notebooks]"
 
 Then clone this repository and install the additional packages:
 
-```bash
+```
 git clone https://github.com/Alaleh-Taghipour/sam2-us-hifu-ablation-monitoring.git
 cd sam2-us-hifu-ablation-monitoring
 pip install -r requirements.txt
@@ -75,7 +78,7 @@ pip install -r requirements.txt
 
 This code uses the SAM2.1 large backbone in the default configuration:
 
-```text
+```
 sam2.1_hiera_large.pt
 configs/sam2.1/sam2.1_hiera_l.yaml
 ```
@@ -84,7 +87,7 @@ The official SAM2 checkpoint should be downloaded from the official SAM2 reposit
 
 The fine-tuned ultrasound head weights used in this project are expected to be placed in the `weights/` folder or another user-defined local path. The default code expects a fine-tuned checkpoint with a corresponding metadata file:
 
-```text
+```
 decoder_ultrasound.pt
 decoder_ultrasound_meta.json
 ```
@@ -95,13 +98,13 @@ The metadata file may include the model configuration and the selected best thre
 
 Example input ultrasound frames should be placed in:
 
-```text
+```
 data_sample/images/
 ```
 
 Ground-truth masks, when available for metric calculation, should be placed in:
 
-```text
+```
 data_sample/masks/
 ```
 
@@ -111,7 +114,7 @@ The current implementation expects a sequence of image frames in `.jpg`, `.jpeg`
 
 After installing the dependencies and preparing the SAM2 checkpoint, run:
 
-```bash
+```
 python app.py
 ```
 
@@ -141,7 +144,7 @@ The pipeline saves outputs to the configured prediction directory, including:
 
 The GUI includes optional motion inputs:
 
-```text
+```
 d, dx, dy
 ```
 
@@ -157,7 +160,7 @@ This logic was included to support motion-aware updates during ultrasound-guided
 
 If you use this repository, please cite the associated manuscript:
 
-```bibtex
+```
 @article{taghipour2026hifu_sam2_monitoring,
   title   = {Simulation-Informed Ultrasound-Guided HIFU Planning and Ablation Monitoring with Robotic Focal Targeting},
   author  = {Taghipour, Alaleh and Lari, Salman and Rajabzadeh, Hossein and Han, Jeong-woo and Kwon, Hyock Ju},
@@ -169,7 +172,7 @@ If you use this repository, please cite the associated manuscript:
 
 Please also cite the official SAM2 paper:
 
-```bibtex
+```
 @article{ravi2024sam2,
   title   = {SAM 2: Segment Anything in Images and Videos},
   author  = {Ravi, Nikhila and Gabeur, Valentin and Hu, Yuan-Ting and Hu, Ronghang and Ryali, Chaitanya and Ma, Tengyu and Khedr, Haitham and R{\"a}dle, Roman and Rolland, Chloe and Gustafson, Laura and Mintun, Eric and Pan, Junting and Alwala, Kalyan Vasudev and Carion, Nicolas and Wu, Chao-Yuan and Girshick, Ross and Doll{\'a}r, Piotr and Feichtenhofer, Christoph},
@@ -178,6 +181,15 @@ Please also cite the official SAM2 paper:
   year    = {2024}
 }
 ```
+
+
+## Data Availability
+
+This repository includes the application code and a small sample ultrasound image sequence with corresponding annotations to demonstrate the expected folder structure and usage of the monitoring pipeline.
+
+The full experimental dataset used for SAM2 fine-tuning and quantitative evaluation is not included directly in this GitHub repository because of file-size and project data-management constraints. For journal submission and reproducibility, the full dataset and fine-tuned model weights should be deposited in a persistent research data repository, such as Zenodo, Mendeley Data, or an institutional repository, subject to approval by the authors and research group.
+
+Once available, the dataset DOI or access link should be added here.
 
 ## License
 
