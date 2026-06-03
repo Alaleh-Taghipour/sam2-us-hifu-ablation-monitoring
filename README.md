@@ -99,16 +99,17 @@ The metadata file may include the model configuration and the selected best thre
 Example input ultrasound frames should be placed in:
 
 ```
-data_sample/images/
+data/Annotations/Images/image_seq_0/
 ```
 
-Ground-truth masks, when available for metric calculation, should be placed in:
+Ground-truth annotation masks, when available for metric calculation, should be placed in:
 
 ```
-data_sample/masks/
+data/Annotations/Annotations/image_seq_0/
 ```
 
 The current implementation expects a sequence of image frames in `.jpg`, `.jpeg`, or `.png` format. The frames are sorted numerically when possible.
+
 
 ## Running the application
 
