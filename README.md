@@ -21,7 +21,7 @@ sam2-us-hifu-ablation-monitoring/
     └── masks/
 
 
-````
+```
 
 ## Main features
 
@@ -61,7 +61,7 @@ A typical installation workflow is:
 git clone https://github.com/facebookresearch/sam2.git
 cd sam2
 pip install -e ".[notebooks]"
-````
+```
 
 Then clone this repository and install the additional packages:
 
