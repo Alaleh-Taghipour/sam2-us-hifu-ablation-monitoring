@@ -6,41 +6,29 @@
 # evaluates segmentation metrics, and supports motion-aware treatment-plan updates.
 
 # Core numerical, visualization, image-processing, and UI dependencies.
-import os
-import numpy as np
-import torch
-import matplotlib.pyplot as plt
-from PIL import Image
-import gradio as gr
-from sam2.build_sam import build_sam2_video_predictor
-import traceback
-import time
-from threading import Thread
-import queue
-import json
-import sys
-from flask import Response, jsonify, request
-import cv2
-import runpy
-import re
-
-import os
-import numpy as np
-import torch
-import matplotlib.pyplot as plt
-from PIL import Image
-import gradio as gr
-from sam2.build_sam import build_sam2_video_predictor
-import traceback
-import time
-from threading import Thread
-import queue
-import json
-import sys
-from flask import Response, jsonify, request
-import cv2
-import runpy
+import csv
+import glob
 import importlib.util
+import json
+import os
+import queue
+import re
+import shutil
+import sys
+import time
+import traceback
+from threading import Thread
+
+import cv2
+import gradio as gr
+import matplotlib.pyplot as plt
+import numpy as np
+import torch
+from flask import Response, jsonify, request
+from PIL import Image
+from sam2.build_sam import build_sam2_video_predictor
+
+
 
 # Directory used for all runtime outputs: contours, focal points, overlays, and metrics.
 PREDICTIONS_DIR = r"C:\Users\a3taghip\sam2\sam2_pipeline\out_csv"
@@ -76,7 +64,6 @@ Z_CONST = 0.380000
 latest_motion = {"d": None, "dx": None, "dy": None, "ts": 0.0}
 
 # File-management utilities used for CSV copying, discovery, and focal-point updates.
-import csv, shutil, glob
 
 
 # -----------------------------------------------------------------------------
